@@ -1,0 +1,14 @@
+{
+  "name": "pet-pal",
+  "version": "0.1.0",
+  "private": true,
+  "description": "小小陪伴 · 桌面宠物养成（网页版 + 桌面悬浮小宠物）",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "float": "PP_FLOAT=1 electron ."
+  },
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}
