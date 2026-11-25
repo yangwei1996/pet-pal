@@ -129,10 +129,17 @@ body{
 .stTop .lv{font:800 11px/1 ui-monospace,Menlo,monospace;color:var(--ink2)}
 .stName{margin-left:auto}
 .bars{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;padding:8px 12px 2px}
-.bLine{display:grid;grid-template-columns:16px 1fr 42px;align-items:center;gap:8px}
+.bLine{display:grid;grid-template-columns:16px 30px 1fr 34px;align-items:center;gap:5px}
 .bLine .ic{width:16px;height:16px;image-rendering:pixelated}
 .bLine .bar{padding:0;margin:0}
 .bLine span{font:700 10px/1 ui-monospace,Menlo,monospace;text-align:right;color:var(--ink2)}
+.bLine .bl{text-align:left;font:800 9px/1 sans-serif;color:var(--ink);letter-spacing:.5px;white-space:nowrap}
+.bLine .v{text-align:right}
+.barTip{padding:4px 12px 6px;font:700 9px/1.4 sans-serif;color:rgba(43,29,22,.55);letter-spacing:0}
+.aboutRow{display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;border-bottom:1px dashed rgba(43,29,22,.2)}
+.aboutRow:last-child{border-bottom:0}
+.aboutRow b{font:800 11px/1.5 sans-serif;color:var(--ink)}
+.aboutRow span{font:700 10px/1.65 sans-serif;color:var(--ink2)}
 /* ---------- 按钮 ---------- */
 .actions{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .btn{
@@ -405,9 +412,10 @@ body{
 .stTop .lv{font-size:10px}
 .rbBtn{border-width:2px;box-shadow:0 3px 0 var(--ink);font-size:9px;padding:4px 6px}
 .bars{grid-template-columns:1fr 1fr;gap:5px 9px;padding:5px 9px 0}
-.bLine{grid-template-columns:16px 1fr 36px;gap:5px}
+.bLine{grid-template-columns:16px 26px 1fr 30px;gap:4px}
 .bLine .ic{width:16px;height:16px}
 .bLine span{font-size:9px}
+.bLine .bl{font-size:8px}
 .bar i{height:8px}
 /* 小屋近况 · 快捷入口 */
 .qnav{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;padding:0;overflow:hidden}
@@ -449,8 +457,8 @@ body{
 .sheet.show{transform:translateY(0)}
 .sheetHead{display:flex;align-items:center;justify-content:space-between;padding:7px 11px;background:var(--paper2);border-bottom:3px solid var(--ink)}
 .sheetHead span{font:800 12px/1 sans-serif;letter-spacing:1px}
-.sheetTabs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:3px solid var(--ink)}
-.sheetTabs .sTab{padding:9px 2px;text-align:center;font:800 12px/1 sans-serif;cursor:pointer;background:var(--paper2);border-right:2px solid var(--ink);color:var(--ink2)}
+.sheetTabs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:3px solid var(--ink)}
+.sheetTabs .sTab{padding:9px 2px;text-align:center;font:800 11px/1 sans-serif;cursor:pointer;background:var(--paper2);border-right:2px solid var(--ink);color:var(--ink2)}
 .sheetTabs .sTab:last-child{border-right:0}
 .sheetTabs .sTab.on{background:var(--cream);color:var(--ink);box-shadow:inset 0 -4px 0 var(--red)}
 .sheetBody{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:9px;display:block}
@@ -493,18 +501,22 @@ html.float #floatWrap{display:block;position:fixed;inset:0;user-select:none;-web
 html.float #floatWrap .fdrag{position:absolute;top:0;left:0;right:0;height:14px;-webkit-app-region:drag;cursor:grab}
 html.float #fCv{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:240px;height:180px;
   image-rendering:pixelated;image-rendering:crisp-edges;-webkit-app-region:no-drag;cursor:pointer}
-html.float .fbubble{position:absolute;left:6px;right:6px;top:2px;background:#fff;border:3px solid #2b1d16;
-  padding:5px 8px;font:700 11px/1.45 sans-serif;color:#2b1d16;opacity:0;transition:opacity .15s;
-  pointer-events:none;z-index:4}
+html.float .fbubble{position:absolute;left:6px;right:6px;top:2px;background:transparent;border:0;
+  padding:2px 4px;font:700 11.5px/1.45 sans-serif;color:#fff8ea;
+  text-shadow:0 0 2px rgba(43,29,22,.95),-2px 0 0 #2b1d16,2px 0 0 #2b1d16,0 -2px 0 #2b1d16,0 2px 0 #2b1d16,-1px -1px 0 #2b1d16,1px -1px 0 #2b1d16,-1px 1px 0 #2b1d16,1px 1px 0 #2b1d16;
+  opacity:0;transition:opacity .15s;pointer-events:none;z-index:4}
 html.float .fbubble.show{opacity:1}
 html.float .fbar{position:absolute;left:0;right:0;bottom:8px;display:flex;gap:6px;justify-content:center;
   align-items:center;-webkit-app-region:no-drag}
-html.float .fcoin{font:800 11px ui-monospace,Menlo,monospace;background:#fff;border:3px solid #2b1d16;
-  padding:3px 6px;box-shadow:2px 2px 0 #2b1d16}
-html.float .fbtn{font:800 11px sans-serif;background:#fff;border:3px solid #2b1d16;box-shadow:2px 2px 0 #2b1d16;
-  padding:4px 9px;cursor:pointer;color:#2b1d16}
-html.float .fbtn:active{transform:translate(2px,2px);box-shadow:none}
-html.float .fhint{position:absolute;left:0;right:0;bottom:44px;text-align:center;font:700 9px sans-serif;color:rgba(43,29,22,.5);-webkit-app-region:no-drag}
+html.float .fcoin{font:800 11px ui-monospace,Menlo,monospace;background:transparent;border:0;
+  padding:3px 2px;color:#ffe9a8;
+  text-shadow:0 0 2px rgba(43,29,22,.95),-2px 0 0 #2b1d16,2px 0 0 #2b1d16,0 -2px 0 #2b1d16,0 2px 0 #2b1d16,-1px -1px 0 #2b1d16,1px -1px 0 #2b1d16,-1px 1px 0 #2b1d16,1px 1px 0 #2b1d16}
+html.float .fbtn{font:800 11px sans-serif;background:transparent;border:0;box-shadow:none;
+  padding:4px 5px;cursor:pointer;color:#fff8ea;
+  text-shadow:0 0 2px rgba(43,29,22,.95),-2px 0 0 #2b1d16,2px 0 0 #2b1d16,0 -2px 0 #2b1d16,0 2px 0 #2b1d16,-1px -1px 0 #2b1d16,1px -1px 0 #2b1d16,-1px 1px 0 #2b1d16,1px 1px 0 #2b1d16}
+html.float .fbtn:active{transform:translate(0,2px);opacity:.75}
+html.float .fhint{position:absolute;left:0;right:0;bottom:44px;text-align:center;font:700 9px sans-serif;color:rgba(255,248,234,.92);
+  text-shadow:0 1px 2px rgba(43,29,22,.85);-webkit-app-region:no-drag}
 </style>
 </head>
 <body>
@@ -547,11 +559,12 @@ html.float .fhint{position:absolute;left:0;right:0;bottom:44px;text-align:center
         <span class="stName"><button class="rbBtn" id="dressBtn">🎀 打扮</button></span>
       </div>
       <div class="bars">
-        <div class="bLine"><canvas class="ic" width="16" height="16" id="icSat"></canvas><div class="bar" id="barSat"></div><span id="vSat">0</span></div>
-        <div class="bLine"><canvas class="ic" width="16" height="16" id="icMood"></canvas><div class="bar" id="barMood"></div><span id="vMood">0</span></div>
-        <div class="bLine"><canvas class="ic" width="16" height="16" id="icEner"></canvas><div class="bar" id="barEner"></div><span id="vEner">0</span></div>
-        <div class="bLine"><canvas class="ic" width="16" height="16" id="icBond"></canvas><div class="bar" id="barBond"></div><span id="vBond">0%</span></div>
+        <div class="bLine"><canvas class="ic" width="16" height="16" id="icSat"></canvas><span class="bl">饱食</span><div class="bar" id="barSat"></div><span class="v" id="vSat">0</span></div>
+        <div class="bLine"><canvas class="ic" width="16" height="16" id="icMood"></canvas><span class="bl">心情</span><div class="bar" id="barMood"></div><span class="v" id="vMood">0</span></div>
+        <div class="bLine"><canvas class="ic" width="16" height="16" id="icEner"></canvas><span class="bl">体力</span><div class="bar" id="barEner"></div><span class="v" id="vEner">0</span></div>
+        <div class="bLine"><canvas class="ic" width="16" height="16" id="icBond"></canvas><span class="bl">亲密</span><div class="bar" id="barBond"></div><span class="v" id="vBond">0%</span></div>
       </div>
+      <div class="barTip">饱食 0-100 · 心情 0-100 · 体力 0-100 · 亲密 %（满 100% 升一级）</div>
     </section>
 
 
@@ -578,20 +591,21 @@ html.float .fhint{position:absolute;left:0;right:0;bottom:44px;text-align:center
   <canvas id="fCv" width="240" height="180"></canvas>
   <div class="fbar">
     <span class="fcoin" id="fCoin">0</span>
-    <button class="fbtn" data-f="feed">喂</button>
-    <button class="fbtn" data-f="play">逗</button>
+    <button class="fbtn" data-f="feed">喂食</button>
+    <button class="fbtn" data-f="play">逗趣</button>
     <button class="fbtn" data-f="home">小屋</button>
-    <button class="fbtn" data-f="quit">×</button>
+    <button class="fbtn" data-f="quit">收起</button>
   </div>
   <div class="fhint" id="fHint"></div>
 </div>
 <div class="sheetMask" id="sheetMask"></div>
 <div class="sheet" id="sheet">
-  <div class="sheetHead"><span>成长 · 手账 · 收藏</span><button class="rbBtn" id="sheetClose">✕</button></div>
+  <div class="sheetHead"><span>成长 · 手账 · 收藏 · 说明</span><button class="rbBtn" id="sheetClose">✕</button></div>
   <div class="sheetTabs" id="sheetTabs">
     <div class="sTab on" data-pane="grow">成长</div>
     <div class="sTab" data-pane="log">手账</div>
     <div class="sTab" data-pane="col">收藏</div>
+    <div class="sTab" data-pane="about">说明</div>
   </div>
   <div class="sheetBody">
     <div class="pane show" id="pane-grow">
@@ -626,6 +640,25 @@ html.float .fhint{position:absolute;left:0;right:0;bottom:44px;text-align:center
         </div>
         <div class="colBody" id="colBody"></div>
         <div class="colTip" id="colTip">冒险有几率带回小东西，集满会有惊喜。</div>
+      </section>
+    </div>
+    <div class="pane" id="pane-about">
+      <section class="card px">
+        <div class="card-h"><span>数值含义</span><span class="tag">0-100</span></div>
+        <div class="aboutRow"><b>饱食</b><span>0-100，每分钟掉 1 点。低于 45 会喊饿、看着没精神。点「喂食」按食物饱腹值补。</span></div>
+        <div class="aboutRow"><b>心情</b><span>0-100，点「逗趣」提升。心情低时不太爱动、互动台词也会变丧。</span></div>
+        <div class="aboutRow"><b>体力</b><span>0-100，冒险要消耗（散步 15、远足 30、探险 45）。不折腾时每分钟自己回 1.6 点。</span></div>
+        <div class="aboutRow"><b>亲密</b><span>0-100%，抚摸、喂食、陪玩、冒险都会加。满 100% 升一级（Lv.1-10），等级决定外观、称号和升级奖励。</span></div>
+        <div class="aboutRow"><b>金币</b><span>写日记、升级、冒险掉落。用来买食物、家具、房间主题。</span></div>
+        <div class="aboutRow"><b>天数</b><span>标题栏的「第 N 天」：从第一次打开算起，跟日记本里的日期一致。</span></div>
+      </section>
+      <section class="card px">
+        <div class="card-h"><span>按钮做什么</span><span class="tag">4 个</span></div>
+        <div class="aboutRow"><b>喂食</b><span>消耗一份库存食物，加饱食和少量亲密。库存空了去「小屋」的商店补。</span></div>
+        <div class="aboutRow"><b>逗趣</b><span>加心情，有冷却；连着点会提示等下再玩。</span></div>
+        <div class="aboutRow"><b>抚摸</b><span>加亲密，有冷却，冷却秒数就写在按钮上。</span></div>
+        <div class="aboutRow"><b>冒险</b><span>选地区出门，带回金币、食物、纪念品或饰品；地区按熟练度逐个解锁。</span></div>
+        <div class="aboutRow"><b>浮</b><span>桌面悬浮：把两只宠物放到桌面角落。桌面版有透明窗口，网页版会提示不支持。</span></div>
       </section>
     </div>
   </div>
@@ -2692,7 +2725,7 @@ function initFloat(){
     });
     $('fCoin').textContent=state.coins+' 金';
     const busy=Object.keys(state.pets).filter(k=>state.pets[k].trip).map(k=>state.pets[k].name+'在'+REGIONS[state.pets[k].exp&&state.pets[k].exp.region?state.pets[k].exp.region:'snow'].name);
-    $('fHint').textContent=busy.length?busy.join(' · '):'点它会摸一摸';
+    $('fHint').textContent=busy.length?busy.join(' · '):'点宠物 = 抚摸 · 下方：喂食 / 逗趣 / 回小屋 / 收起';
   }
   draw();setInterval(draw,120);
   setInterval(function(){ /* 跟主窗口同步 */
@@ -2723,9 +2756,7 @@ else{
   const fb=$('floatBtn');
   if(fb)fb.addEventListener('click',function(){
     try{ if(window.petDesktop&&window.petDesktop.openFloat){window.petDesktop.openFloat();return;} }catch(e){}
-    const w=window.open('mobile.html?float=1','petpal_float','width=286,height=250,menubar=0,toolbar=0,location=0,status=0');
-    if(!w)say('浏览器拦住了小窗口，允许一下弹窗就能悬浮');
-    else say('小宠物已经跳到桌面上了，可以拖到角落');
+    say('悬浮模式只在桌面版「小小陪伴」App 里能用：它能把宠物画到桌面上、不挡背景。网页里开小窗会带一层白底，所以这里不开了。');
   });
   /* 小窗里点「小屋」时，把主窗口叫到前面 */
   try{
@@ -2748,7 +2779,7 @@ else{
   mask.addEventListener('click',closeSheet);
   document.querySelectorAll('.sTab').forEach(t=>t.addEventListener('click',()=>{
     document.querySelectorAll('.sTab').forEach(x=>x.classList.toggle('on',x===t));
-    ['grow','log','col'].forEach(p=>$('pane-'+p).classList.toggle('show',p===t.dataset.pane));
+    ['grow','log','col','about'].forEach(p=>$('pane-'+p).classList.toggle('show',p===t.dataset.pane));
     if(t.dataset.pane==='log')renderLog();
     if(t.dataset.pane==='col')renderCol();
   }));
@@ -2789,7 +2820,7 @@ else{
   }
   function showPane(name){
     document.querySelectorAll('.sTab').forEach(x=>x.classList.toggle('on',x.dataset.pane===name));
-    ['grow','log','col'].forEach(p=>$('pane-'+p).classList.toggle('show',p===name));
+    ['grow','log','col','about'].forEach(p=>$('pane-'+p).classList.toggle('show',p===name));
     if(name==='log')renderLog();
     if(name==='col')renderCol();
   }
